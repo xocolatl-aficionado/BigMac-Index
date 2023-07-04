@@ -7,6 +7,7 @@
     { name: "India", code: "INR" },
     { name: "China", code: "CNY" },
     { name: "Canada", code: "CAD" },
+    { name: "Switzerland", code: "CHF" },
     // Add more countries as needed
   ];
 </script>
