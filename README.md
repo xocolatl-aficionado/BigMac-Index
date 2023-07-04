@@ -5,7 +5,7 @@ See it here: [https://bigmacindex.surge.sh/](https://bigmacindex.surge.sh/)
 
 
 ## But why?
-Currencies exchange at specific rates, which fluctuate all the time, leading to many a dazed worker who saw a part of their life savings evaporate into the ether upon contact with the famed wire transfer. So I thought it pertinent to be able to easily compare the price of the Big Mac across countries to quantify the bang for the respective buck. 
+Currencies exchange at specific rates, which fluctuate all the time, leading to many a dazed worker who saw a part of their life savings evaporate into the ether upon contact with the famed wire transfer. So I thought it pertinent to be able to easily compare the price of the Big Mac&trade; across countries to quantify the bang for the respective buck. 
 
 The [Big Mac index](https://en.wikipedia.org/wiki/Big_Mac_Index) was invented by [The Economist](https://www.economist.com/big-mac-index) in 1986 as a lighthearted guide to whether currencies are at their “correct” level. 
  
