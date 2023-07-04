@@ -12,7 +12,7 @@ The [Big Mac index](https://en.wikipedia.org/wiki/Big_Mac_Index) was invented by
 
 But _why_ do these exchange rates rise and fall? Cant we set them and forget them? That [is](https://www.investopedia.com/terms/c/currency-peg.asp) an option, but has many hurdles still. 
 
-And if they do fluctuate, on a regular Tuesday, when I land in Zurich after my long flight from Miami, can I at least buy a Big Mac in exchange for the same amount of sweat and blood that they ask for it back in Miami?
+And if they do fluctuate, on a regular Tuesday, when I land in Zurich after my long flight from Miami, can I at least buy a Big Mac&trade; in exchange for the same amount of sweat and blood that they ask for it back in Miami?
 
 No. 
 
