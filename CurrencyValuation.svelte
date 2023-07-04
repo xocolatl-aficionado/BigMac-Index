@@ -50,7 +50,7 @@
 
 <main>
   <h1>Big Mac Index</h1>
-  <h1>How valuable is <span class="different-color">your</span> currency?</h1>
+  <h1>How valuable is <span class="different-color">your</span>  currency?</h1>
   
   <select bind:value={selectedCountry1} on:change={handleCountryChange} id="country1-dropdown">
     {#each countries as country}
@@ -71,7 +71,7 @@
       Exchange Rate: <span class="bold-number">{formatNumber(exchangeRate)}</span> Implied Exchange Rate: <span class="bold-number">{formatNumber(bigMacPrices[selectedCountry2.code] / bigMacPrices[selectedCountry1.code])}</span>
       <br>
       A Big Mac bought in {selectedCountry1.name} for <span class="bold-number">{formatNumber(bigMacPrices[selectedCountry1.code])} {selectedCountry1.code} </span>
-          would be valued at <span class="bold-number">{formatNumber(bigMacPrices[selectedCountry2.code] / exchangeRate)} {selectedCountry1.code}</span> in {selectedCountry2.name}
+          <br> would be valued at <span class="bold-number">{formatNumber(bigMacPrices[selectedCountry2.code] / exchangeRate)} {selectedCountry1.code}</span> in {selectedCountry2.name}
       </p>
     </div>
     <div class="big-mac-container {showBigMacContainer ? 'show' : ''}">
@@ -143,7 +143,7 @@
   }
 
   .big-mac-image {
-    width: 250px;
+    width: 300px;
 
   }
 
@@ -190,8 +190,9 @@
     background-image: url('https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/flags/1x1/ch.svg');
   }
   .different-color {
-  color: red; /* Specify the desired color for the word */
-}
+  color: red; 
+  font-style: italic;
+  }
 #country2-dropdown {
   border: 2px solid red; /* Specify the desired border width and color */
   border-radius: 4px; /* Add rounded corners to the border if desired */
@@ -206,7 +207,17 @@
  .bold-number {
   font-weight: bold;
 }
-
+.result-container p {
+    white-space: nowrap;
+  
+  }
+  .result-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
 
 
 </style>
