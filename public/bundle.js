@@ -22,6 +22,14 @@ var app = (function () {
     function safe_not_equal(a, b) {
         return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
     }
+    let src_url_equal_anchor;
+    function src_url_equal(element_src, url) {
+        if (!src_url_equal_anchor) {
+            src_url_equal_anchor = document.createElement('a');
+        }
+        src_url_equal_anchor.href = url;
+        return element_src === src_url_equal_anchor.href;
+    }
     function is_empty(obj) {
         return Object.keys(obj).length === 0;
     }
@@ -50,6 +58,9 @@ var app = (function () {
     }
     function space() {
         return text(' ');
+    }
+    function empty() {
+        return text('');
     }
     function listen(node, event, handler, options) {
         node.addEventListener(event, handler, options);
@@ -106,6 +117,14 @@ var app = (function () {
      */
     function onMount(fn) {
         get_current_component().$$.on_mount.push(fn);
+    }
+    /**
+     * Schedules a callback to run immediately after the component has been updated.
+     *
+     * The first time the callback runs will be after the initial `onMount`
+     */
+    function afterUpdate(fn) {
+        get_current_component().$$.after_update.push(fn);
     }
 
     const dirty_components = [];
@@ -465,20 +484,20 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[11] = list[i];
+    	child_ctx[12] = list[i];
     	return child_ctx;
     }
 
     function get_each_context_1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[11] = list[i];
+    	child_ctx[12] = list[i];
     	return child_ctx;
     }
 
-    // (49:4) {#each countries as country}
+    // (54:4) {#each countries as country}
     function create_each_block_1(ctx) {
     	let option;
-    	let t_value = /*country*/ ctx[11].name + "";
+    	let t_value = /*country*/ ctx[12].name + "";
     	let t;
     	let option_value_value;
 
@@ -486,18 +505,18 @@ var app = (function () {
     		c: function create() {
     			option = element("option");
     			t = text(t_value);
-    			option.__value = option_value_value = /*country*/ ctx[11];
+    			option.__value = option_value_value = /*country*/ ctx[12];
     			option.value = option.__value;
-    			add_location(option, file, 49, 4, 1601);
+    			add_location(option, file, 54, 6, 1760);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);
     			append_dev(option, t);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*countries*/ 4 && t_value !== (t_value = /*country*/ ctx[11].name + "")) set_data_dev(t, t_value);
+    			if (dirty & /*countries*/ 4 && t_value !== (t_value = /*country*/ ctx[12].name + "")) set_data_dev(t, t_value);
 
-    			if (dirty & /*countries*/ 4 && option_value_value !== (option_value_value = /*country*/ ctx[11])) {
+    			if (dirty & /*countries*/ 4 && option_value_value !== (option_value_value = /*country*/ ctx[12])) {
     				prop_dev(option, "__value", option_value_value);
     				option.value = option.__value;
     			}
@@ -511,17 +530,17 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(49:4) {#each countries as country}",
+    		source: "(54:4) {#each countries as country}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (54:4) {#each countries as country}
+    // (59:4) {#each countries as country}
     function create_each_block(ctx) {
     	let option;
-    	let t_value = /*country*/ ctx[11].name + "";
+    	let t_value = /*country*/ ctx[12].name + "";
     	let t;
     	let option_value_value;
 
@@ -529,18 +548,18 @@ var app = (function () {
     		c: function create() {
     			option = element("option");
     			t = text(t_value);
-    			option.__value = option_value_value = /*country*/ ctx[11];
+    			option.__value = option_value_value = /*country*/ ctx[12];
     			option.value = option.__value;
-    			add_location(option, file, 54, 4, 1783);
+    			add_location(option, file, 59, 6, 1944);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);
     			append_dev(option, t);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*countries*/ 4 && t_value !== (t_value = /*country*/ ctx[11].name + "")) set_data_dev(t, t_value);
+    			if (dirty & /*countries*/ 4 && t_value !== (t_value = /*country*/ ctx[12].name + "")) set_data_dev(t, t_value);
 
-    			if (dirty & /*countries*/ 4 && option_value_value !== (option_value_value = /*country*/ ctx[11])) {
+    			if (dirty & /*countries*/ 4 && option_value_value !== (option_value_value = /*country*/ ctx[12])) {
     				prop_dev(option, "__value", option_value_value);
     				option.value = option.__value;
     			}
@@ -554,122 +573,41 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(54:4) {#each countries as country}",
+    		source: "(59:4) {#each countries as country}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (59:2) {#if valuation}
+    // (64:2) {#if valuation}
     function create_if_block(ctx) {
-    	let p0;
-    	let t0;
-    	let t1;
-    	let t2;
-    	let br0;
-    	let t3;
-    	let t4;
-    	let t5;
-    	let br1;
-    	let t6;
-    	let t7_value = /*bigMacPrices*/ ctx[5][/*selectedCountry2*/ ctx[1].code] / /*bigMacPrices*/ ctx[5][/*selectedCountry1*/ ctx[0].code] + "";
-    	let t7;
-    	let t8;
-    	let p1;
-    	let t9;
-    	let t10_value = /*selectedCountry1*/ ctx[0].name + "";
-    	let t10;
-    	let t11;
-    	let t12_value = /*bigMacPrices*/ ctx[5][/*selectedCountry1*/ ctx[0].code] + "";
-    	let t12;
-    	let t13;
-    	let t14_value = /*selectedCountry1*/ ctx[0].code + "";
-    	let t14;
-    	let t15;
-    	let t16_value = /*bigMacPrices*/ ctx[5][/*selectedCountry2*/ ctx[1].code] / /*exchangeRate*/ ctx[3] + "";
-    	let t16;
-    	let t17;
-    	let t18_value = /*selectedCountry1*/ ctx[0].code + "";
-    	let t18;
-    	let t19;
-    	let t20_value = /*selectedCountry2*/ ctx[1].name + "";
-    	let t20;
+    	let previous_key = (/*selectedCountry1*/ ctx[0], /*selectedCountry2*/ ctx[1]);
+    	let key_block_anchor;
+    	let key_block = create_key_block(ctx);
 
     	const block = {
     		c: function create() {
-    			p0 = element("p");
-    			t0 = text("Valuation: ");
-    			t1 = text(/*valuation*/ ctx[4]);
-    			t2 = space();
-    			br0 = element("br");
-    			t3 = text("\n    Exchange rate: ");
-    			t4 = text(/*exchangeRate*/ ctx[3]);
-    			t5 = space();
-    			br1 = element("br");
-    			t6 = text("\n    Implied Exchange rate: ");
-    			t7 = text(t7_value);
-    			t8 = space();
-    			p1 = element("p");
-    			t9 = text("A Big Mac bought in ");
-    			t10 = text(t10_value);
-    			t11 = text(" for ");
-    			t12 = text(t12_value);
-    			t13 = space();
-    			t14 = text(t14_value);
-    			t15 = text("\n    would be valued at ");
-    			t16 = text(t16_value);
-    			t17 = space();
-    			t18 = text(t18_value);
-    			t19 = text(" in ");
-    			t20 = text(t20_value);
-    			add_location(br0, file, 61, 4, 1911);
-    			add_location(br1, file, 63, 4, 1954);
-    			add_location(p0, file, 59, 2, 1876);
-    			add_location(p1, file, 67, 2, 2072);
+    			key_block.c();
+    			key_block_anchor = empty();
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, p0, anchor);
-    			append_dev(p0, t0);
-    			append_dev(p0, t1);
-    			append_dev(p0, t2);
-    			append_dev(p0, br0);
-    			append_dev(p0, t3);
-    			append_dev(p0, t4);
-    			append_dev(p0, t5);
-    			append_dev(p0, br1);
-    			append_dev(p0, t6);
-    			append_dev(p0, t7);
-    			insert_dev(target, t8, anchor);
-    			insert_dev(target, p1, anchor);
-    			append_dev(p1, t9);
-    			append_dev(p1, t10);
-    			append_dev(p1, t11);
-    			append_dev(p1, t12);
-    			append_dev(p1, t13);
-    			append_dev(p1, t14);
-    			append_dev(p1, t15);
-    			append_dev(p1, t16);
-    			append_dev(p1, t17);
-    			append_dev(p1, t18);
-    			append_dev(p1, t19);
-    			append_dev(p1, t20);
+    			key_block.m(target, anchor);
+    			insert_dev(target, key_block_anchor, anchor);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*valuation*/ 16) set_data_dev(t1, /*valuation*/ ctx[4]);
-    			if (dirty & /*exchangeRate*/ 8) set_data_dev(t4, /*exchangeRate*/ ctx[3]);
-    			if (dirty & /*selectedCountry2, selectedCountry1*/ 3 && t7_value !== (t7_value = /*bigMacPrices*/ ctx[5][/*selectedCountry2*/ ctx[1].code] / /*bigMacPrices*/ ctx[5][/*selectedCountry1*/ ctx[0].code] + "")) set_data_dev(t7, t7_value);
-    			if (dirty & /*selectedCountry1*/ 1 && t10_value !== (t10_value = /*selectedCountry1*/ ctx[0].name + "")) set_data_dev(t10, t10_value);
-    			if (dirty & /*selectedCountry1*/ 1 && t12_value !== (t12_value = /*bigMacPrices*/ ctx[5][/*selectedCountry1*/ ctx[0].code] + "")) set_data_dev(t12, t12_value);
-    			if (dirty & /*selectedCountry1*/ 1 && t14_value !== (t14_value = /*selectedCountry1*/ ctx[0].code + "")) set_data_dev(t14, t14_value);
-    			if (dirty & /*selectedCountry2, exchangeRate*/ 10 && t16_value !== (t16_value = /*bigMacPrices*/ ctx[5][/*selectedCountry2*/ ctx[1].code] / /*exchangeRate*/ ctx[3] + "")) set_data_dev(t16, t16_value);
-    			if (dirty & /*selectedCountry1*/ 1 && t18_value !== (t18_value = /*selectedCountry1*/ ctx[0].code + "")) set_data_dev(t18, t18_value);
-    			if (dirty & /*selectedCountry2*/ 2 && t20_value !== (t20_value = /*selectedCountry2*/ ctx[1].name + "")) set_data_dev(t20, t20_value);
+    			if (dirty & /*selectedCountry1, selectedCountry2*/ 3 && safe_not_equal(previous_key, previous_key = (/*selectedCountry1*/ ctx[0], /*selectedCountry2*/ ctx[1]))) {
+    				key_block.d(1);
+    				key_block = create_key_block(ctx);
+    				key_block.c();
+    				key_block.m(key_block_anchor.parentNode, key_block_anchor);
+    			} else {
+    				key_block.p(ctx, dirty);
+    			}
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(p0);
-    			if (detaching) detach_dev(t8);
-    			if (detaching) detach_dev(p1);
+    			if (detaching) detach_dev(key_block_anchor);
+    			key_block.d(detaching);
     		}
     	};
 
@@ -677,7 +615,230 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(59:2) {#if valuation}",
+    		source: "(64:2) {#if valuation}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (65:4) {#key selectedCountry1, selectedCountry2}
+    function create_key_block(ctx) {
+    	let div0;
+    	let p0;
+    	let t0;
+    	let t1;
+    	let p1;
+    	let t2;
+    	let t3_value = formatNumber(/*exchangeRate*/ ctx[3]) + "";
+    	let t3;
+    	let t4;
+    	let p2;
+    	let t5;
+    	let t6_value = formatNumber(/*bigMacPrices*/ ctx[6][/*selectedCountry2*/ ctx[1].code] / /*bigMacPrices*/ ctx[6][/*selectedCountry1*/ ctx[0].code]) + "";
+    	let t6;
+    	let t7;
+    	let div5;
+    	let div1;
+    	let p3;
+    	let t8;
+    	let t9_value = /*selectedCountry1*/ ctx[0].name + "";
+    	let t9;
+    	let t10;
+    	let t11_value = formatNumber(/*bigMacPrices*/ ctx[6][/*selectedCountry1*/ ctx[0].code]) + "";
+    	let t11;
+    	let t12;
+    	let t13_value = /*selectedCountry1*/ ctx[0].code + "";
+    	let t13;
+    	let t14;
+    	let t15_value = formatNumber(/*bigMacPrices*/ ctx[6][/*selectedCountry2*/ ctx[1].code] / /*exchangeRate*/ ctx[3]) + "";
+    	let t15;
+    	let t16;
+    	let t17_value = /*selectedCountry1*/ ctx[0].code + "";
+    	let t17;
+    	let t18;
+    	let t19_value = /*selectedCountry2*/ ctx[1].name + "";
+    	let t19;
+    	let t20;
+    	let div4;
+    	let div2;
+    	let img0;
+    	let img0_src_value;
+    	let t21;
+    	let p4;
+    	let t22_value = formatNumber(/*bigMacPrices*/ ctx[6][/*selectedCountry1*/ ctx[0].code]) + "";
+    	let t22;
+    	let t23;
+    	let t24_value = /*selectedCountry1*/ ctx[0].code + "";
+    	let t24;
+    	let t25;
+    	let div3;
+    	let img1;
+    	let img1_src_value;
+    	let t26;
+    	let p5;
+    	let t27_value = formatNumber(/*bigMacPrices*/ ctx[6][/*selectedCountry2*/ ctx[1].code] / /*exchangeRate*/ ctx[3]) + "";
+    	let t27;
+    	let t28;
+    	let t29_value = /*selectedCountry1*/ ctx[0].code + "";
+    	let t29;
+    	let div5_class_value;
+
+    	const block = {
+    		c: function create() {
+    			div0 = element("div");
+    			p0 = element("p");
+    			t0 = text(/*valuation*/ ctx[4]);
+    			t1 = space();
+    			p1 = element("p");
+    			t2 = text("Exchange Rate: ");
+    			t3 = text(t3_value);
+    			t4 = space();
+    			p2 = element("p");
+    			t5 = text("Implied Exchange Rate: ");
+    			t6 = text(t6_value);
+    			t7 = space();
+    			div5 = element("div");
+    			div1 = element("div");
+    			p3 = element("p");
+    			t8 = text("A Big Mac bought in ");
+    			t9 = text(t9_value);
+    			t10 = text(" for ");
+    			t11 = text(t11_value);
+    			t12 = space();
+    			t13 = text(t13_value);
+    			t14 = text("\n          would be valued at ");
+    			t15 = text(t15_value);
+    			t16 = space();
+    			t17 = text(t17_value);
+    			t18 = text(" in ");
+    			t19 = text(t19_value);
+    			t20 = space();
+    			div4 = element("div");
+    			div2 = element("div");
+    			img0 = element("img");
+    			t21 = space();
+    			p4 = element("p");
+    			t22 = text(t22_value);
+    			t23 = space();
+    			t24 = text(t24_value);
+    			t25 = space();
+    			div3 = element("div");
+    			img1 = element("img");
+    			t26 = space();
+    			p5 = element("p");
+    			t27 = text(t27_value);
+    			t28 = space();
+    			t29 = text(t29_value);
+    			attr_dev(p0, "class", "valuation");
+    			add_location(p0, file, 66, 6, 2122);
+    			attr_dev(p1, "class", "exchange-rate");
+    			add_location(p1, file, 67, 6, 2165);
+    			attr_dev(p2, "class", "implied-exchange-rate");
+    			add_location(p2, file, 68, 6, 2244);
+    			attr_dev(div0, "class", "result-container");
+    			add_location(div0, file, 65, 4, 2085);
+    			add_location(p3, file, 72, 8, 2518);
+    			attr_dev(div1, "class", "big-mac-info");
+    			add_location(div1, file, 71, 6, 2483);
+    			attr_dev(img0, "class", "big-mac-image svelte-1fqupzd");
+    			if (!src_url_equal(img0.src, img0_src_value = "https://s7d1.scene7.com/is/image/mcdonalds/DC_201907_0005_BigMac_832x472:product-header-desktop?wid=830&hei=458&dpr=off")) attr_dev(img0, "src", img0_src_value);
+    			attr_dev(img0, "alt", "Big Mac");
+    			add_location(img0, file, 79, 10, 2889);
+    			attr_dev(p4, "class", "label svelte-1fqupzd");
+    			add_location(p4, file, 80, 10, 3067);
+    			attr_dev(div2, "class", "svelte-1fqupzd");
+    			add_location(div2, file, 78, 8, 2873);
+    			attr_dev(img1, "class", "big-mac-image svelte-1fqupzd");
+    			if (!src_url_equal(img1.src, img1_src_value = "https://s7d1.scene7.com/is/image/mcdonalds/DC_201907_0005_BigMac_832x472:product-header-desktop?wid=830&hei=458&dpr=off")) attr_dev(img1, "src", img1_src_value);
+    			attr_dev(img1, "alt", "Big Mac");
+    			add_location(img1, file, 83, 10, 3203);
+    			attr_dev(p5, "class", "label svelte-1fqupzd");
+    			add_location(p5, file, 84, 10, 3381);
+    			attr_dev(div3, "class", "svelte-1fqupzd");
+    			add_location(div3, file, 82, 8, 3187);
+    			attr_dev(div4, "class", "image-container svelte-1fqupzd");
+    			add_location(div4, file, 77, 6, 2835);
+    			attr_dev(div5, "class", div5_class_value = "big-mac-container " + (/*showBigMacContainer*/ ctx[5] ? 'show' : '') + " svelte-1fqupzd");
+    			add_location(div5, file, 70, 4, 2409);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div0, anchor);
+    			append_dev(div0, p0);
+    			append_dev(p0, t0);
+    			append_dev(div0, t1);
+    			append_dev(div0, p1);
+    			append_dev(p1, t2);
+    			append_dev(p1, t3);
+    			append_dev(div0, t4);
+    			append_dev(div0, p2);
+    			append_dev(p2, t5);
+    			append_dev(p2, t6);
+    			insert_dev(target, t7, anchor);
+    			insert_dev(target, div5, anchor);
+    			append_dev(div5, div1);
+    			append_dev(div1, p3);
+    			append_dev(p3, t8);
+    			append_dev(p3, t9);
+    			append_dev(p3, t10);
+    			append_dev(p3, t11);
+    			append_dev(p3, t12);
+    			append_dev(p3, t13);
+    			append_dev(p3, t14);
+    			append_dev(p3, t15);
+    			append_dev(p3, t16);
+    			append_dev(p3, t17);
+    			append_dev(p3, t18);
+    			append_dev(p3, t19);
+    			append_dev(div5, t20);
+    			append_dev(div5, div4);
+    			append_dev(div4, div2);
+    			append_dev(div2, img0);
+    			append_dev(div2, t21);
+    			append_dev(div2, p4);
+    			append_dev(p4, t22);
+    			append_dev(p4, t23);
+    			append_dev(p4, t24);
+    			append_dev(div4, t25);
+    			append_dev(div4, div3);
+    			append_dev(div3, img1);
+    			append_dev(div3, t26);
+    			append_dev(div3, p5);
+    			append_dev(p5, t27);
+    			append_dev(p5, t28);
+    			append_dev(p5, t29);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*valuation*/ 16) set_data_dev(t0, /*valuation*/ ctx[4]);
+    			if (dirty & /*exchangeRate*/ 8 && t3_value !== (t3_value = formatNumber(/*exchangeRate*/ ctx[3]) + "")) set_data_dev(t3, t3_value);
+    			if (dirty & /*selectedCountry2, selectedCountry1*/ 3 && t6_value !== (t6_value = formatNumber(/*bigMacPrices*/ ctx[6][/*selectedCountry2*/ ctx[1].code] / /*bigMacPrices*/ ctx[6][/*selectedCountry1*/ ctx[0].code]) + "")) set_data_dev(t6, t6_value);
+    			if (dirty & /*selectedCountry1*/ 1 && t9_value !== (t9_value = /*selectedCountry1*/ ctx[0].name + "")) set_data_dev(t9, t9_value);
+    			if (dirty & /*selectedCountry1*/ 1 && t11_value !== (t11_value = formatNumber(/*bigMacPrices*/ ctx[6][/*selectedCountry1*/ ctx[0].code]) + "")) set_data_dev(t11, t11_value);
+    			if (dirty & /*selectedCountry1*/ 1 && t13_value !== (t13_value = /*selectedCountry1*/ ctx[0].code + "")) set_data_dev(t13, t13_value);
+    			if (dirty & /*selectedCountry2, exchangeRate*/ 10 && t15_value !== (t15_value = formatNumber(/*bigMacPrices*/ ctx[6][/*selectedCountry2*/ ctx[1].code] / /*exchangeRate*/ ctx[3]) + "")) set_data_dev(t15, t15_value);
+    			if (dirty & /*selectedCountry1*/ 1 && t17_value !== (t17_value = /*selectedCountry1*/ ctx[0].code + "")) set_data_dev(t17, t17_value);
+    			if (dirty & /*selectedCountry2*/ 2 && t19_value !== (t19_value = /*selectedCountry2*/ ctx[1].name + "")) set_data_dev(t19, t19_value);
+    			if (dirty & /*selectedCountry1*/ 1 && t22_value !== (t22_value = formatNumber(/*bigMacPrices*/ ctx[6][/*selectedCountry1*/ ctx[0].code]) + "")) set_data_dev(t22, t22_value);
+    			if (dirty & /*selectedCountry1*/ 1 && t24_value !== (t24_value = /*selectedCountry1*/ ctx[0].code + "")) set_data_dev(t24, t24_value);
+    			if (dirty & /*selectedCountry2, exchangeRate*/ 10 && t27_value !== (t27_value = formatNumber(/*bigMacPrices*/ ctx[6][/*selectedCountry2*/ ctx[1].code] / /*exchangeRate*/ ctx[3]) + "")) set_data_dev(t27, t27_value);
+    			if (dirty & /*selectedCountry1*/ 1 && t29_value !== (t29_value = /*selectedCountry1*/ ctx[0].code + "")) set_data_dev(t29, t29_value);
+
+    			if (dirty & /*showBigMacContainer*/ 32 && div5_class_value !== (div5_class_value = "big-mac-container " + (/*showBigMacContainer*/ ctx[5] ? 'show' : '') + " svelte-1fqupzd")) {
+    				attr_dev(div5, "class", div5_class_value);
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div0);
+    			if (detaching) detach_dev(t7);
+    			if (detaching) detach_dev(div5);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_key_block.name,
+    		type: "key",
+    		source: "(65:4) {#key selectedCountry1, selectedCountry2}",
     		ctx
     	});
 
@@ -733,13 +894,13 @@ var app = (function () {
 
     			t3 = space();
     			if (if_block) if_block.c();
-    			add_location(h1, file, 46, 2, 1449);
-    			if (/*selectedCountry1*/ ctx[0] === void 0) add_render_callback(() => /*select0_change_handler*/ ctx[7].call(select0));
-    			add_location(select0, file, 47, 2, 1493);
-    			if (/*selectedCountry2*/ ctx[1] === void 0) add_render_callback(() => /*select1_change_handler*/ ctx[8].call(select1));
-    			add_location(select1, file, 52, 2, 1675);
-    			attr_dev(main, "class", "svelte-x7y0gi");
-    			add_location(main, file, 45, 0, 1440);
+    			add_location(h1, file, 51, 2, 1606);
+    			if (/*selectedCountry1*/ ctx[0] === void 0) add_render_callback(() => /*select0_change_handler*/ ctx[8].call(select0));
+    			add_location(select0, file, 52, 2, 1650);
+    			if (/*selectedCountry2*/ ctx[1] === void 0) add_render_callback(() => /*select1_change_handler*/ ctx[9].call(select1));
+    			add_location(select1, file, 57, 2, 1834);
+    			attr_dev(main, "class", "svelte-1fqupzd");
+    			add_location(main, file, 50, 0, 1597);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -772,10 +933,10 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(select0, "change", /*select0_change_handler*/ ctx[7]),
-    					listen_dev(select0, "change", /*handleCountryChange*/ ctx[6], false, false, false, false),
-    					listen_dev(select1, "change", /*select1_change_handler*/ ctx[8]),
-    					listen_dev(select1, "change", /*handleCountryChange*/ ctx[6], false, false, false, false)
+    					listen_dev(select0, "change", /*select0_change_handler*/ ctx[8]),
+    					listen_dev(select0, "change", /*handleCountryChange*/ ctx[7], false, false, false, false),
+    					listen_dev(select1, "change", /*select1_change_handler*/ ctx[9]),
+    					listen_dev(select1, "change", /*handleCountryChange*/ ctx[7], false, false, false, false)
     				];
 
     				mounted = true;
@@ -874,6 +1035,10 @@ var app = (function () {
     	return block;
     }
 
+    function formatNumber(value) {
+    	return Number(value).toFixed(2);
+    }
+
     function instance($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('CurrencyValuation', slots, []);
@@ -891,6 +1056,8 @@ var app = (function () {
     		"EUR": 4.65,
     		"CHF": 6.5
     	}; // hardcoded
+
+    	let showBigMacContainer = false;
 
     	async function fetchExchangeRate(foreignCountry) {
     		const response = await fetch(`https://api.exchangerate-api.com/v4/latest/${selectedCountry1.code}`);
@@ -915,6 +1082,7 @@ var app = (function () {
     	async function handleCountryChange() {
     		$$invalidate(3, exchangeRate = await fetchExchangeRate(selectedCountry2.code));
     		$$invalidate(4, valuation = calculateValuation());
+    		$$invalidate(5, showBigMacContainer = true);
     	}
 
     	onMount(async () => {
@@ -961,6 +1129,7 @@ var app = (function () {
     	};
 
     	$$self.$capture_state = () => ({
+    		afterUpdate,
     		onMount,
     		countries,
     		selectedCountry1,
@@ -968,9 +1137,11 @@ var app = (function () {
     		exchangeRate,
     		valuation,
     		bigMacPrices,
+    		showBigMacContainer,
     		fetchExchangeRate,
     		calculateValuation,
-    		handleCountryChange
+    		handleCountryChange,
+    		formatNumber
     	});
 
     	$$self.$inject_state = $$props => {
@@ -979,6 +1150,7 @@ var app = (function () {
     		if ('selectedCountry2' in $$props) $$invalidate(1, selectedCountry2 = $$props.selectedCountry2);
     		if ('exchangeRate' in $$props) $$invalidate(3, exchangeRate = $$props.exchangeRate);
     		if ('valuation' in $$props) $$invalidate(4, valuation = $$props.valuation);
+    		if ('showBigMacContainer' in $$props) $$invalidate(5, showBigMacContainer = $$props.showBigMacContainer);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -991,6 +1163,7 @@ var app = (function () {
     		countries,
     		exchangeRate,
     		valuation,
+    		showBigMacContainer,
     		bigMacPrices,
     		handleCountryChange,
     		select0_change_handler,
@@ -1104,7 +1277,7 @@ var app = (function () {
     		{ name: "China", code: "CNY" },
     		{ name: "Canada", code: "CAD" },
     		{ name: "Switzerland", code: "CHF" }
-    	]; // Add more countries as needed
+    	];
 
     	const writable_props = [];
 
