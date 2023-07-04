@@ -49,13 +49,15 @@
 </script>
 
 <main>
-  <h1>Big Mac Index Currency Valuation</h1>
-  <select bind:value={selectedCountry1} on:change={handleCountryChange}>
+  <h1>Big Mac Index</h1>
+  <h1>How valuable is <span class="different-color">your</span> currency?</h1>
+  
+  <select bind:value={selectedCountry1} on:change={handleCountryChange} id="country1-dropdown">
     {#each countries as country}
       <option value={country}>{country.name}</option>
     {/each}
   </select>
-  <select bind:value={selectedCountry2} on:change={handleCountryChange}>
+  <select bind:value={selectedCountry2} on:change={handleCountryChange} id="country2-dropdown">
     {#each countries as country}
       <option value={country}>{country.name}</option>
     {/each}
@@ -64,17 +66,16 @@
   {#if valuation}
     {#key selectedCountry1, selectedCountry2}
     <div class="result-container">
-      <p class="valuation">{valuation}</p>
-      <p class="exchange-rate">Exchange Rate: {formatNumber(exchangeRate)}</p>
-      <p class="implied-exchange-rate">Implied Exchange Rate: {formatNumber(bigMacPrices[selectedCountry2.code] / bigMacPrices[selectedCountry1.code])}</p>
+      <p class="valuation">{valuation} 
+      <br>
+      Exchange Rate: <span class="bold-number">{formatNumber(exchangeRate)}</span> Implied Exchange Rate: <span class="bold-number">{formatNumber(bigMacPrices[selectedCountry2.code] / bigMacPrices[selectedCountry1.code])}</span>
+      <br>
+      A Big Mac bought in {selectedCountry1.name} for <span class="bold-number">{formatNumber(bigMacPrices[selectedCountry1.code])} {selectedCountry1.code} </span>
+          would be valued at <span class="bold-number">{formatNumber(bigMacPrices[selectedCountry2.code] / exchangeRate)} {selectedCountry1.code}</span> in {selectedCountry2.name}
+      </p>
     </div>
     <div class="big-mac-container {showBigMacContainer ? 'show' : ''}">
-      <div class="big-mac-info">
-        <p>
-          A Big Mac bought in {selectedCountry1.name} for {formatNumber(bigMacPrices[selectedCountry1.code])} {selectedCountry1.code}
-          would be valued at {formatNumber(bigMacPrices[selectedCountry2.code] / exchangeRate)} {selectedCountry1.code} in {selectedCountry2.name}
-        </p>
-      </div>
+    
       <div class="image-container">
         <div>
           <img class="big-mac-image" src="https://s7d1.scene7.com/is/image/mcdonalds/DC_201907_0005_BigMac_832x472:product-header-desktop?wid=830&hei=458&dpr=off" alt="Big Mac">
@@ -82,7 +83,7 @@
             <span class="flag-icon flag-icon-{selectedCountry1.code.toLowerCase()}"></span>
             {formatNumber(bigMacPrices[selectedCountry1.code])} {selectedCountry1.code}
           </p>        
-          </div>
+        </div>
         <div>
           <img class="big-mac-image" src="https://s7d1.scene7.com/is/image/mcdonalds/DC_201907_0005_BigMac_832x472:product-header-desktop?wid=830&hei=458&dpr=off" alt="Big Mac">
           <p class="label">
@@ -98,12 +99,25 @@
 
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+  select,
+  p {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20pt;
+  }
+  
   main {
     text-align: center;
     padding: 1em;
     max-width: 400px;
     margin: 0 auto;
+  }
+  
+  h1{
+     /* font-family: 'Permanent Marker', cursive; */
+     margin-top: 0;
+     margin-bottom: 0;
+     font-family: 'Oswald', sans-serif;
   }
 
   .big-mac-container {
@@ -111,14 +125,17 @@
     transition: opacity 1s;
   }
 
+
   .big-mac-container.show {
     opacity: 1;
   }
   .image-container {
     display: flex;
     flex-direction: row;
-    margin-top: 20px;
+    margin-top: 0;
     justify-content: center;
+    align-items: center; 
+    position: relative;
   }
   .image-container > div {
     text-align: center; /* Add this line to center align the image and label within each div */
@@ -126,7 +143,7 @@
   }
 
   .big-mac-image {
-    width: 500px;
+    width: 250px;
 
   }
 
@@ -134,7 +151,7 @@
     text-align: center;
     margin-top: 10px;
     font-family: 'Permanent Marker', cursive;
-    font-size: 25pt
+    font-size: 20pt
   }
   
   .flag-icon {
@@ -172,6 +189,24 @@
   .flag-icon.flag-icon-chf {
     background-image: url('https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/flags/1x1/ch.svg');
   }
+  .different-color {
+  color: red; /* Specify the desired color for the word */
+}
+#country2-dropdown {
+  border: 2px solid red; /* Specify the desired border width and color */
+  border-radius: 4px; /* Add rounded corners to the border if desired */
+  padding: 8px; /* Add padding to create some space between the text and the border */
+}
+
+#country1-dropdown {
+  border-radius: 4px; /* Add rounded corners to the border if desired */
+  padding: 8px; /* Add padding to create some space between the text and the border */
+}
+ 
+ .bold-number {
+  font-weight: bold;
+}
+
 
 
 </style>
