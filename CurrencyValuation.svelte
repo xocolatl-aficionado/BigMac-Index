@@ -78,12 +78,18 @@
       <div class="image-container">
         <div>
           <img class="big-mac-image" src="https://s7d1.scene7.com/is/image/mcdonalds/DC_201907_0005_BigMac_832x472:product-header-desktop?wid=830&hei=458&dpr=off" alt="Big Mac">
-          <p class="label">{formatNumber(bigMacPrices[selectedCountry1.code])} {selectedCountry1.code}</p>
-        </div>
+          <p class="label">
+            <span class="flag-icon flag-icon-{selectedCountry1.code.toLowerCase()}"></span>
+            {formatNumber(bigMacPrices[selectedCountry1.code])} {selectedCountry1.code}
+          </p>        
+          </div>
         <div>
           <img class="big-mac-image" src="https://s7d1.scene7.com/is/image/mcdonalds/DC_201907_0005_BigMac_832x472:product-header-desktop?wid=830&hei=458&dpr=off" alt="Big Mac">
-          <p class="label">{formatNumber(bigMacPrices[selectedCountry2.code] / exchangeRate)} {selectedCountry1.code}</p>
-        </div>
+          <p class="label">
+            <span class="flag-icon flag-icon-{selectedCountry2.code.toLowerCase()}"></span>
+            {formatNumber(bigMacPrices[selectedCountry2.code] / exchangeRate)} {selectedCountry1.code}
+          </p>        
+          </div>
       </div>
     </div>
     {/key}
@@ -129,6 +135,42 @@
     margin-top: 10px;
     font-family: 'Permanent Marker', cursive;
     font-size: 25pt
+  }
+  
+  .flag-icon {
+    display: inline-block;
+    width: 1.5em;
+    height: 1em;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    font-size: 1.5em;
+  }
+
+  /* Example styles for flag icons using the flag-icon-css library */
+  .flag-icon.flag-icon-cad {
+    width: 1.5em;
+    height: 1em;
+    background-image: url('https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/flags/1x1/ca.svg');
+  }
+
+  .flag-icon.flag-icon-cny {
+    background-image: url('https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/flags/1x1/cn.svg');
+  }
+
+  .flag-icon.flag-icon-inr {
+    background-image: url('https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/flags/1x1/in.svg');
+  }
+
+  .flag-icon.flag-icon-usd {
+    background-image: url('https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/flags/1x1/us.svg');
+  }
+
+  .flag-icon.flag-icon-eur {
+    background-image: url('https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/flags/1x1/eu.svg');
+  }
+
+  .flag-icon.flag-icon-chf {
+    background-image: url('https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/flags/1x1/ch.svg');
   }
 
 
