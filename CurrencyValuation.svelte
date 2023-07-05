@@ -42,13 +42,19 @@
     valuation = calculateValuation();
   });
   
-    function formatNumber(value) {
-    return Number(value).toFixed(2);
+    function formatNumber(value, currency) {
+      if(!currency){
+        return Number(value).toFixed(2);
+      }
+      return new Intl.NumberFormat(selectedCountry1.locale, {
+        style: 'currency',
+        currency: currency
+      }).format(value);
   }
 
 </script>
 
-<main>
+<main class="scrollable">
   <h1>Big Mac Index</h1>
   <h1>How valuable is <span class="different-color">your</span>  currency?</h1>
   
@@ -68,10 +74,10 @@
     <div class="result-container">
       <p class="valuation">{valuation} 
       <br>
-      Exchange Rate: <span class="bold-number">{formatNumber(exchangeRate)}</span> Implied Exchange Rate: <span class="bold-number">{formatNumber(bigMacPrices[selectedCountry2.code] / bigMacPrices[selectedCountry1.code])}</span>
+      EX Rate: {formatNumber(1, selectedCountry1.code)} = <span class="bold-number">{formatNumber(exchangeRate, selectedCountry2.code)}</span> <br>Implied EX Rate: {formatNumber(1, selectedCountry1.code)} = <span class="bold-number">{formatNumber(bigMacPrices[selectedCountry2.code] / bigMacPrices[selectedCountry1.code], selectedCountry2.code)}</span>
       <br>
-      A Big Mac&trade; bought in {selectedCountry1.name} for <span class="bold-number">{formatNumber(bigMacPrices[selectedCountry1.code])} {selectedCountry1.code} </span>
-          <br> would be valued at <span class="bold-number">{formatNumber(bigMacPrices[selectedCountry2.code] / exchangeRate)} {selectedCountry1.code}</span> in {selectedCountry2.name}
+      A Big Mac&trade; bought in {selectedCountry1.name} for <span class="bold-number">{formatNumber(bigMacPrices[selectedCountry1.code], selectedCountry1.code)} </span>
+          <br> would be valued at <span class="bold-number">{formatNumber(bigMacPrices[selectedCountry2.code] / exchangeRate, selectedCountry1.code)}</span> in {selectedCountry2.name}
       </p>
     </div>
     <div class="big-mac-container {showBigMacContainer ? 'show' : ''}">
@@ -109,7 +115,10 @@
   main {
     text-align: center;
     padding: 1em;
-    max-width: 400px;
+    overflow: auto;
+    overflow-x: auto;
+    width: 90%;
+    max-width: 1000px;
     margin: 0 auto;
   }
   
@@ -143,7 +152,8 @@
   }
 
   .big-mac-image {
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
 
   }
 
@@ -207,16 +217,22 @@
  .bold-number {
   font-weight: bold;
 }
-.result-container p {
-    white-space: nowrap;
-  
-  }
+
   .result-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+  }
+  
+  .scrollable {
+    overflow: auto;
+    height: 100vh;
+    max-width: 100%; /* Remove the explicit max-width to allow the container to expand */
+    margin: 0 auto;
+    overflow-x: hidden; /* Hide the horizontal scrollbar */
+    -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS devices */
   }
 
 
