@@ -42,8 +42,14 @@
     valuation = calculateValuation();
   });
   
-    function formatNumber(value) {
-    return Number(value).toFixed(2);
+    function formatNumber(value, currency) {
+      if(!currency){
+        return Number(value).toFixed(2);
+      }
+      return new Intl.NumberFormat(selectedCountry1.locale, {
+        style: 'currency',
+        currency: currency
+      }).format(value);
   }
 
 </script>
@@ -68,10 +74,10 @@
     <div class="result-container">
       <p class="valuation">{valuation} 
       <br>
-      Exchange Rate: <span class="bold-number">{formatNumber(exchangeRate)}</span> Implied Exchange Rate: <span class="bold-number">{formatNumber(bigMacPrices[selectedCountry2.code] / bigMacPrices[selectedCountry1.code])}</span>
+      Exchange Rate: {formatNumber(1, selectedCountry1.code)} = <span class="bold-number">{formatNumber(exchangeRate, selectedCountry2.code)}</span> Implied Exchange Rate: {formatNumber(1, selectedCountry1.code)} = <span class="bold-number">{formatNumber(bigMacPrices[selectedCountry2.code] / bigMacPrices[selectedCountry1.code], selectedCountry2.code)}</span>
       <br>
-      A Big Mac&trade; bought in {selectedCountry1.name} for <span class="bold-number">{formatNumber(bigMacPrices[selectedCountry1.code])} {selectedCountry1.code} </span>
-          <br> would be valued at <span class="bold-number">{formatNumber(bigMacPrices[selectedCountry2.code] / exchangeRate)} {selectedCountry1.code}</span> in {selectedCountry2.name}
+      A Big Mac&trade; bought in {selectedCountry1.name} for <span class="bold-number">{formatNumber(bigMacPrices[selectedCountry1.code], selectedCountry1.code)} </span>
+          <br> would be valued at <span class="bold-number">{formatNumber(bigMacPrices[selectedCountry2.code] / exchangeRate, selectedCountry1.code)}</span> in {selectedCountry2.name}
       </p>
     </div>
     <div class="big-mac-container {showBigMacContainer ? 'show' : ''}">
