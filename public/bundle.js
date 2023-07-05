@@ -507,7 +507,7 @@ var app = (function () {
     			t = text(t_value);
     			option.__value = option_value_value = /*country*/ ctx[12];
     			option.value = option.__value;
-    			add_location(option, file, 56, 6, 1847);
+    			add_location(option, file, 56, 6, 1866);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);
@@ -550,7 +550,7 @@ var app = (function () {
     			t = text(t_value);
     			option.__value = option_value_value = /*country*/ ctx[12];
     			option.value = option.__value;
-    			add_location(option, file, 61, 6, 2054);
+    			add_location(option, file, 61, 6, 2073);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);
@@ -746,45 +746,45 @@ var app = (function () {
     			t29 = text(t29_value);
     			t30 = space();
     			t31 = text(t31_value);
-    			add_location(br0, file, 69, 6, 2272);
-    			attr_dev(span0, "class", "bold-number svelte-t6hexy");
-    			add_location(span0, file, 70, 21, 2298);
-    			attr_dev(span1, "class", "bold-number svelte-t6hexy");
-    			add_location(span1, file, 70, 106, 2383);
-    			add_location(br1, file, 71, 6, 2512);
-    			attr_dev(span2, "class", "bold-number svelte-t6hexy");
-    			add_location(span2, file, 72, 61, 2578);
-    			add_location(br2, file, 73, 10, 2698);
-    			attr_dev(span3, "class", "bold-number svelte-t6hexy");
-    			add_location(span3, file, 73, 34, 2722);
-    			attr_dev(p0, "class", "valuation svelte-t6hexy");
-    			add_location(p0, file, 68, 6, 2232);
-    			attr_dev(div0, "class", "result-container svelte-t6hexy");
-    			add_location(div0, file, 67, 4, 2195);
-    			attr_dev(img0, "class", "big-mac-image svelte-t6hexy");
+    			add_location(br0, file, 69, 6, 2291);
+    			attr_dev(span0, "class", "bold-number svelte-1fsck49");
+    			add_location(span0, file, 70, 21, 2317);
+    			attr_dev(span1, "class", "bold-number svelte-1fsck49");
+    			add_location(span1, file, 70, 106, 2402);
+    			add_location(br1, file, 71, 6, 2531);
+    			attr_dev(span2, "class", "bold-number svelte-1fsck49");
+    			add_location(span2, file, 72, 61, 2597);
+    			add_location(br2, file, 73, 10, 2717);
+    			attr_dev(span3, "class", "bold-number svelte-1fsck49");
+    			add_location(span3, file, 73, 34, 2741);
+    			attr_dev(p0, "class", "valuation svelte-1fsck49");
+    			add_location(p0, file, 68, 6, 2251);
+    			attr_dev(div0, "class", "result-container svelte-1fsck49");
+    			add_location(div0, file, 67, 4, 2214);
+    			attr_dev(img0, "class", "big-mac-image svelte-1fsck49");
     			if (!src_url_equal(img0.src, img0_src_value = "https://s7d1.scene7.com/is/image/mcdonalds/DC_201907_0005_BigMac_832x472:product-header-desktop?wid=830&hei=458&dpr=off")) attr_dev(img0, "src", img0_src_value);
     			attr_dev(img0, "alt", "Big Mac");
-    			add_location(img0, file, 80, 10, 3032);
-    			attr_dev(span4, "class", span4_class_value = "flag-icon flag-icon-" + /*selectedCountry1*/ ctx[0].code.toLowerCase() + " svelte-t6hexy");
-    			add_location(span4, file, 82, 12, 3240);
-    			attr_dev(p1, "class", "label svelte-t6hexy");
-    			add_location(p1, file, 81, 10, 3210);
-    			attr_dev(div1, "class", "svelte-t6hexy");
-    			add_location(div1, file, 79, 8, 3016);
-    			attr_dev(img1, "class", "big-mac-image svelte-t6hexy");
+    			add_location(img0, file, 80, 10, 3051);
+    			attr_dev(span4, "class", span4_class_value = "flag-icon flag-icon-" + /*selectedCountry1*/ ctx[0].code.toLowerCase() + " svelte-1fsck49");
+    			add_location(span4, file, 82, 12, 3259);
+    			attr_dev(p1, "class", "label svelte-1fsck49");
+    			add_location(p1, file, 81, 10, 3229);
+    			attr_dev(div1, "class", "svelte-1fsck49");
+    			add_location(div1, file, 79, 8, 3035);
+    			attr_dev(img1, "class", "big-mac-image svelte-1fsck49");
     			if (!src_url_equal(img1.src, img1_src_value = "https://s7d1.scene7.com/is/image/mcdonalds/DC_201907_0005_BigMac_832x472:product-header-desktop?wid=830&hei=458&dpr=off")) attr_dev(img1, "src", img1_src_value);
     			attr_dev(img1, "alt", "Big Mac");
-    			add_location(img1, file, 87, 10, 3470);
-    			attr_dev(span5, "class", span5_class_value = "flag-icon flag-icon-" + /*selectedCountry2*/ ctx[1].code.toLowerCase() + " svelte-t6hexy");
-    			add_location(span5, file, 89, 12, 3678);
-    			attr_dev(p2, "class", "label svelte-t6hexy");
-    			add_location(p2, file, 88, 10, 3648);
-    			attr_dev(div2, "class", "svelte-t6hexy");
-    			add_location(div2, file, 86, 8, 3454);
-    			attr_dev(div3, "class", "image-container svelte-t6hexy");
-    			add_location(div3, file, 78, 6, 2978);
-    			attr_dev(div4, "class", div4_class_value = "big-mac-container " + (/*showBigMacContainer*/ ctx[5] ? 'show' : '') + " svelte-t6hexy");
-    			add_location(div4, file, 76, 4, 2899);
+    			add_location(img1, file, 87, 10, 3489);
+    			attr_dev(span5, "class", span5_class_value = "flag-icon flag-icon-" + /*selectedCountry2*/ ctx[1].code.toLowerCase() + " svelte-1fsck49");
+    			add_location(span5, file, 89, 12, 3697);
+    			attr_dev(p2, "class", "label svelte-1fsck49");
+    			add_location(p2, file, 88, 10, 3667);
+    			attr_dev(div2, "class", "svelte-1fsck49");
+    			add_location(div2, file, 86, 8, 3473);
+    			attr_dev(div3, "class", "image-container svelte-1fsck49");
+    			add_location(div3, file, 78, 6, 2997);
+    			attr_dev(div4, "class", div4_class_value = "big-mac-container " + (/*showBigMacContainer*/ ctx[5] ? 'show' : '') + " svelte-1fsck49");
+    			add_location(div4, file, 76, 4, 2918);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div0, anchor);
@@ -850,21 +850,21 @@ var app = (function () {
     			if (dirty & /*selectedCountry1*/ 1 && t17_value !== (t17_value = /*selectedCountry1*/ ctx[0].code + "")) set_data_dev(t17, t17_value);
     			if (dirty & /*selectedCountry2*/ 2 && t19_value !== (t19_value = /*selectedCountry2*/ ctx[1].name + "")) set_data_dev(t19, t19_value);
 
-    			if (dirty & /*selectedCountry1, countries*/ 5 && span4_class_value !== (span4_class_value = "flag-icon flag-icon-" + /*selectedCountry1*/ ctx[0].code.toLowerCase() + " svelte-t6hexy")) {
+    			if (dirty & /*selectedCountry1, countries*/ 5 && span4_class_value !== (span4_class_value = "flag-icon flag-icon-" + /*selectedCountry1*/ ctx[0].code.toLowerCase() + " svelte-1fsck49")) {
     				attr_dev(span4, "class", span4_class_value);
     			}
 
     			if (dirty & /*selectedCountry1*/ 1 && t23_value !== (t23_value = formatNumber(/*bigMacPrices*/ ctx[6][/*selectedCountry1*/ ctx[0].code]) + "")) set_data_dev(t23, t23_value);
     			if (dirty & /*selectedCountry1*/ 1 && t25_value !== (t25_value = /*selectedCountry1*/ ctx[0].code + "")) set_data_dev(t25, t25_value);
 
-    			if (dirty & /*selectedCountry2, countries*/ 6 && span5_class_value !== (span5_class_value = "flag-icon flag-icon-" + /*selectedCountry2*/ ctx[1].code.toLowerCase() + " svelte-t6hexy")) {
+    			if (dirty & /*selectedCountry2, countries*/ 6 && span5_class_value !== (span5_class_value = "flag-icon flag-icon-" + /*selectedCountry2*/ ctx[1].code.toLowerCase() + " svelte-1fsck49")) {
     				attr_dev(span5, "class", span5_class_value);
     			}
 
     			if (dirty & /*selectedCountry2, exchangeRate*/ 10 && t29_value !== (t29_value = formatNumber(/*bigMacPrices*/ ctx[6][/*selectedCountry2*/ ctx[1].code] / /*exchangeRate*/ ctx[3]) + "")) set_data_dev(t29, t29_value);
     			if (dirty & /*selectedCountry1*/ 1 && t31_value !== (t31_value = /*selectedCountry1*/ ctx[0].code + "")) set_data_dev(t31, t31_value);
 
-    			if (dirty & /*showBigMacContainer*/ 32 && div4_class_value !== (div4_class_value = "big-mac-container " + (/*showBigMacContainer*/ ctx[5] ? 'show' : '') + " svelte-t6hexy")) {
+    			if (dirty & /*showBigMacContainer*/ 32 && div4_class_value !== (div4_class_value = "big-mac-container " + (/*showBigMacContainer*/ ctx[5] ? 'show' : '') + " svelte-1fsck49")) {
     				attr_dev(div4, "class", div4_class_value);
     			}
     		},
@@ -946,21 +946,21 @@ var app = (function () {
 
     			t7 = space();
     			if (if_block) if_block.c();
-    			attr_dev(h10, "class", "svelte-t6hexy");
-    			add_location(h10, file, 51, 2, 1606);
-    			attr_dev(span, "class", "different-color svelte-t6hexy");
-    			add_location(span, file, 52, 22, 1651);
-    			attr_dev(h11, "class", "svelte-t6hexy");
-    			add_location(h11, file, 52, 2, 1631);
+    			attr_dev(h10, "class", "svelte-1fsck49");
+    			add_location(h10, file, 51, 2, 1625);
+    			attr_dev(span, "class", "different-color svelte-1fsck49");
+    			add_location(span, file, 52, 22, 1670);
+    			attr_dev(h11, "class", "svelte-1fsck49");
+    			add_location(h11, file, 52, 2, 1650);
     			attr_dev(select0, "id", "country1-dropdown");
-    			attr_dev(select0, "class", "svelte-t6hexy");
+    			attr_dev(select0, "class", "svelte-1fsck49");
     			if (/*selectedCountry1*/ ctx[0] === void 0) add_render_callback(() => /*select0_change_handler*/ ctx[8].call(select0));
-    			add_location(select0, file, 54, 2, 1714);
+    			add_location(select0, file, 54, 2, 1733);
     			attr_dev(select1, "id", "country2-dropdown");
-    			attr_dev(select1, "class", "svelte-t6hexy");
+    			attr_dev(select1, "class", "svelte-1fsck49");
     			if (/*selectedCountry2*/ ctx[1] === void 0) add_render_callback(() => /*select1_change_handler*/ ctx[9].call(select1));
-    			add_location(select1, file, 59, 2, 1921);
-    			attr_dev(main, "class", "svelte-t6hexy");
+    			add_location(select1, file, 59, 2, 1940);
+    			attr_dev(main, "class", "scrollable svelte-1fsck49");
     			add_location(main, file, 50, 0, 1597);
     		},
     		l: function claim(nodes) {

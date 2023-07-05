@@ -48,7 +48,7 @@
 
 </script>
 
-<main>
+<main class="scrollable">
   <h1>Big Mac Index</h1>
   <h1>How valuable is <span class="different-color">your</span>  currency?</h1>
   
@@ -109,7 +109,10 @@
   main {
     text-align: center;
     padding: 1em;
-    max-width: 400px;
+    overflow: auto;
+    overflow-x: auto;
+    width: 90%;
+    max-width: 1000px;
     margin: 0 auto;
   }
   
@@ -143,7 +146,8 @@
   }
 
   .big-mac-image {
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
 
   }
 
@@ -207,16 +211,22 @@
  .bold-number {
   font-weight: bold;
 }
-.result-container p {
-    white-space: nowrap;
-  
-  }
+
   .result-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+  }
+  
+  .scrollable {
+    overflow: auto;
+    height: 100vh;
+    max-width: 100%; /* Remove the explicit max-width to allow the container to expand */
+    margin: 0 auto;
+    overflow-x: hidden; /* Hide the horizontal scrollbar */
+    -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS devices */
   }
 
 
