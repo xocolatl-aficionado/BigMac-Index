@@ -74,7 +74,7 @@
     <div class="result-container">
       <p class="valuation">{valuation} 
       <br>
-      Exchange Rate: {formatNumber(1, selectedCountry1.code)} = <span class="bold-number">{formatNumber(exchangeRate, selectedCountry2.code)}</span> Implied Exchange Rate: {formatNumber(1, selectedCountry1.code)} = <span class="bold-number">{formatNumber(bigMacPrices[selectedCountry2.code] / bigMacPrices[selectedCountry1.code], selectedCountry2.code)}</span>
+      EX Rate: {formatNumber(1, selectedCountry1.code)} = <span class="bold-number">{formatNumber(exchangeRate, selectedCountry2.code)}</span> <br>Implied EX Rate: {formatNumber(1, selectedCountry1.code)} = <span class="bold-number">{formatNumber(bigMacPrices[selectedCountry2.code] / bigMacPrices[selectedCountry1.code], selectedCountry2.code)}</span>
       <br>
       A Big Mac&trade; bought in {selectedCountry1.name} for <span class="bold-number">{formatNumber(bigMacPrices[selectedCountry1.code], selectedCountry1.code)} </span>
           <br> would be valued at <span class="bold-number">{formatNumber(bigMacPrices[selectedCountry2.code] / exchangeRate, selectedCountry1.code)}</span> in {selectedCountry2.name}
